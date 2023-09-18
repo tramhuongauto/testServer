@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact List</title>
+</head>
+<body>
+    <h1>Contact List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Images</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact[1] }}</td> <!-- Username -->
+                    <td>{{ contact[2] }}</td> <!-- Password -->
+                    <td>{{ contact[3] }}</td> <!-- Images -->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <h2>Add a New Contact</h2>
+    <form method="POST" action="/add" enctype="multipart/form-data">
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+        <br>
+        <label for="images">Images:</label>
+        <input type="file" name="images" accept="image/*" required>
+        <br>
+        <input type="submit" value="Add Contact">
+    </form>
+</body>
+</html>
