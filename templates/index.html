@@ -4,39 +4,24 @@
     <title>Contact List</title>
 </head>
 <body>
-    <h1>Contact List</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Images</th>
-                <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for contact in contacts %}
-                <tr>
-                    <td>{{ contact[1] }}</td> <!-- Username -->
-                    <td>{{ contact[2] }}</td> <!-- Password -->
-                    <td>{{ contact[3] }}</td> <!-- Images -->
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
     <br>
-    <h2>Add a New Contact</h2>
+    <h1>Add a New User</h1>
     <form method="POST" action="/add" enctype="multipart/form-data">
+        <input type="hidden" name="key" value="">
         <label for="username">Username:</label>
-        <input type="text" name="username" required>
+        <input type="text" name="username" value="{{ users }}" required>
+        {% if error: %}
+            <p>{{ error }}</p>
+        {% endif %}
         <br>
         <label for="password">Password:</label>
-        <input type="password" name="password" required>
+        <input type="password" name="password" required value="{{ password }}">
         <br>
         <label for="images">Images:</label>
         <input type="file" name="images" accept="image/*" required>
         <br>
-        <input type="submit" value="Add Contact">
+        <input type="submit" value="Add">
     </form>
 </body>
 </html>
